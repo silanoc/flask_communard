@@ -1,0 +1,14 @@
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav li{
+    display:inline;
+}
+
+h1, h2 {
+    color:darkred
+}

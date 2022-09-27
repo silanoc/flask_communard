@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Flask{% endblock %}</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <img width="256" alt="The Soviet Union 1971 CPA 3991 stamp (Fighting at the Barricades)" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/The_Soviet_Union_1971_CPA_3991_stamp_%28Fighting_at_the_Barricades%29.jpg/256px-The_Soviet_Union_1971_CPA_3991_stamp_%28Fighting_at_the_Barricades%29.jpg">
+        <h1>Commune de Paris en liberté</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/acceuil/">Acceuil</a> </li>
+            <li><a href="/personnages/">Personnes</a> </li>
+            <li>Cimetières</li>
+            <li>Chansons</li>
+            <li>Affiches</li>
+        </ul>
+    </nav>
+    {% block content %}{% endblock %}
+</body>
+</html>
+
