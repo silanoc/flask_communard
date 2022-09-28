@@ -1,0 +1,8 @@
+SELECT ?communard ?communardLabel ?prénom ?prénomLabel  ?nom_de_famille ?nom_de_familleLabel ?image ?identifiant_Maitron WHERE {
+        SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+        ?communard wdt:P106 wd:Q1780490.
+        OPTIONAL { ?communard wdt:P735 ?prénom. }
+        OPTIONAL { ?communard wdt:P4724 ?identifiant_Maitron. }
+        OPTIONAL { ?communard wdt:P734 ?nom_de_famille. }
+        OPTIONAL { ?communard wdt:P18 ?image. }
+        }
