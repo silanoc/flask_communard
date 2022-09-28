@@ -1,8 +1,13 @@
-SELECT ?communard ?communardLabel ?prénom ?prénomLabel  ?nom_de_famille ?nom_de_familleLabel ?image ?identifiant_Maitron WHERE {
-        SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+SELECT ?communard ?communardLabel ?prénom ?prénomLabel  ?nom_de_famille ?nom_de_familleLabel ?image ?identifiant_Maitron  ?thumb WHERE {
+        SERVICE wikibase:label { bd:serviceParam wikibase:language "fr". }
         ?communard wdt:P106 wd:Q1780490.
         OPTIONAL { ?communard wdt:P735 ?prénom. }
         OPTIONAL { ?communard wdt:P4724 ?identifiant_Maitron. }
         OPTIONAL { ?communard wdt:P734 ?nom_de_famille. }
         OPTIONAL { ?communard wdt:P18 ?image. }
+
+        BIND(REPLACE(wikibase:decodeUri(STR(?image)), "http://commons.wikimedia.org/wiki/Special:FilePath/", "") as ?fileName) .
+        BIND(REPLACE(?fileName, " ", "_") as ?safeFileName)
+        BIND(MD5(?safeFileName) as ?fileNameMD5) .
+        BIND(CONCAT("https://upload.wikimedia.org/wikipedia/commons/", SUBSTR(?fileNameMD5, 1, 1), "/", SUBSTR(?fileNameMD5, 1, 2), "/", ?safeFileName) as ?thumb)
         }

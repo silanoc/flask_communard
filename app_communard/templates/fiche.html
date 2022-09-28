@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<head><meta charset="utf-8"> </head>
+
 {% extends 'base.html' %}
 
 {% block title %}Communardes et Communards{% endblock %}
@@ -6,4 +8,41 @@
 {% block content %}
 <h2>{{communard}}</h2>
 <p>fiche à propos de {{communard}}</p>
+
+<div class="conteneur">
+    <div >
+        {% for key,info_item in info.items() %}
+        {% for key2, id_comm in info_item.items() %}
+            {%if key == 'thumb.value' and loop.first %}
+            <p><img class="portrait" src="{{id_comm}}" alt="echec ou pas d'image - "{{id_comm}}"></p>
+            {% endif %}
+        {% endfor %}
+        {% endfor %}   
+    </div>
+    <div>
+    {% for key,info_item in info.items()  %}
+    {% for key2, id_comm in info_item.items()  %}
+        {%if key == 'nom_de_familleLabel.value' and loop.first %}
+        <p> Nom de famille : {{ id_comm }} </p>
+        {% endif %}
+    {% endfor %}
+    {% endfor %}
+
+    {% for key,info_item in info.items() %}
+    {% for key2, id_comm in info_item.items() %}
+        {%if key == 'prénomLabel.value' and loop.first %}
+        <p> Prénom : {{ id_comm }} </p>
+        {% endif %}
+    {% endfor %}
+    {% endfor %}
+
+    {% for key,info_item in info.items() %}
+    {% for key2, id_comm in info_item.items() %}
+        {%if key == 'identifiant_Maitron.value' and loop.first%}
+        <p> article dans le Maiton : <a href="https://maitron.fr/spip.php?article{{ id_comm }}">{{id_comm}}</a> </p>
+        {% endif %}
+    {% endfor %}
+    {% endfor %}
+    </div>
+    </div>
 {% endblock %}

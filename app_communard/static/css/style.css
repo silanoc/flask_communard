@@ -1,8 +1,21 @@
+@charset "UTF-8"; 
+
 header{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+}
+
+.conteneur{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.portrait{
+    max-height: 250px;
 }
 
 nav li{
@@ -12,3 +25,4 @@ nav li{
 h1, h2 {
     color:darkred
 }
+

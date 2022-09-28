@@ -5,7 +5,7 @@ import os
 import logging
 from flask import Flask, render_template, Blueprint
 
-from .models import qui
+from .models import qui, obtenir_information
 
 app = Flask(__name__)
 
@@ -27,7 +27,12 @@ def personnages():
 def fiche(communard):
     """page affichant les informations pour al communard-e-s entrée en paramètre"""
     logging.debug("affiche la fiche d'un personnage")
-    return render_template('fiche.html', communard = communard)
+    info = obtenir_information(communard)
+    print("info", info)
+    communard2 = info['communard.type']
+    id_comm = int(list(communard2.keys())[0])
+    print(id_comm)
+    return render_template('fiche.html', communard = communard, info = info, id_comm = id_comm)
 
 if __name__ == "__main__":
     app.run()
