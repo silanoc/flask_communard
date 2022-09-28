@@ -2,7 +2,7 @@
 # coding: utf-8
 
 from encodings import utf_8
-from os
+import os
 import sys
 import pandas as pd
 from SPARQLWrapper import SPARQLWrapper, JSON
