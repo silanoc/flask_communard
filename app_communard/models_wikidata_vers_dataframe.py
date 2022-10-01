@@ -26,7 +26,7 @@ class Extraction():
     """
 
     def __init__(self, chemin: pathlib.Path) -> None:
-        if os.path.exists("app_communard/requetes/requete_nom_prenom_image_maiton.txt"):
+        if os.path.exists(chemin):
             self.query: str = self._ouvrir_fichier_requete(chemin)
         else:
             logging.error("le chemin du fichier de requete n'existe pas")
@@ -100,33 +100,3 @@ class Extraction():
         """
         logging.info("get_dataframe - ok")
         return self._de_la_requete_au_df()
-
-
-def obtenir_les_labels_communards(df: pd.DataFrame) -> list[str]:
-    """labels = prénom/nom ou pseudo par lequel la personne est décrite dans wikidata.
-    Mettre les labels dans un set pour récuper les labels uniques (doublons existants par exemple en cas de double prénom...), 
-    puis dans une liste pour les ranger par ordre alphabétique
-
-    :param pd.DataFrame df: le df avec tous les communard-e-s.
-    :return list_personnage: liste de labels de communard-e-s unique par ordre alphabétique
-    :rtype: list[str]
-    """
-    set_personne = set()
-    serie_personne: pd.Series = df['communardLabel.value'].sort_values()
-    for item in serie_personne:
-        set_personne.add(item)
-    list_personnage = list(set_personne)
-    list_personnage.sort()
-    logging.info("liste de labels prêtes")
-    return list_personnage
-
-
-if __name__ == "__main__":
-
-    extract = Extraction(
-        "app_communard/requetes/requete_nom_prenom_image_maiton.txt")
-    df = extract.get_dataframe()
-
-    qui = obtenir_les_labels_communards(df)
-    logging.debug(qui)
-    logging.debug(len(qui))
