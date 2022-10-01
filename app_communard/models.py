@@ -2,8 +2,8 @@
 # coding: utf-8
 
 from cmath import isinf
-import logging
 from .models_wikidata_vers_dataframe import *
+
 
 logging.basicConfig(level=logging.DEBUG,
                     filename="./app_communard/logs/app.log",
@@ -23,4 +23,4 @@ def obtenir_information(individu)-> dict():
 extract = Extraction("app_communard/requetes/requete_nom_prenom_image_maiton.txt")
 df: pd.DataFrame = extract.get_dataframe()
 # avoir une liste de communard-e-s, servant à afficher tous les noms sur la page personnages
-qui = obtenir_les_items_communards(df)
+qui = obtenir_les_labels_communards(df)

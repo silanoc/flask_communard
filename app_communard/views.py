@@ -2,9 +2,8 @@
 # coding: utf-8
 
 import os
-import logging
 from flask import Flask, render_template, Blueprint
-
+import logging
 from .models import qui, obtenir_information
 
 app = Flask(__name__)
