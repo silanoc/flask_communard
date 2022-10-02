@@ -1,9 +1,16 @@
 @charset "UTF-8"; 
 @font-face{
-    /* font le plus proche de celui utilisé pour les affiches */
+    /* font le plus proche de celui utilisé pour "Communde de Paris" sur les affiches */
     font-family: 'FontsFree-Net-Balboa-W00-ExtraBlack';
     src: url('../font/FontsFree-Net-Balboa-W00-ExtraBlack.ttf');
 }
+
+@font-face{
+    /* font le plus proche de celui utilisé pour les titres sur les affiches */
+    font-family: 'Ratio_Modern_W00_ExtraBold';
+    src: url('../font/Ratio_Modern_W00_ExtraBold.ttf');
+}
+
 
 :root{
     --noir_passe: #272822;
@@ -56,6 +63,9 @@ article{
     border-style: dashed;
     border-width: 0.1rem;
     border-color: var(--noir_passe);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
 }
 
 .conteneur{
@@ -63,16 +73,36 @@ article{
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    border-style: dashed;
+    border-width: 0.1rem;
+    border-color: var(--noir_passe);
 }
 
 
 .portrait{
     max-height: 250px;
+
 }
 
 
-
-h1, h2 {
-    color:darkred
+article h2 {
+    color: var(--noir_passe);
+    opacity: 90%;
+    font-family:'Ratio_Modern_W00_ExtraBold';
+    font-size: 2rem;
 }
 
+/*-------------liens------------------*/
+
+a:link {
+    color: rgb(255, 0, 0);
+}
+a:visited {
+    color: rgb(48, 0, 0);
+}
+
+a:hover {
+    border-style: dashed;
+    border-width: 0.1rem;
+    border-color: var(--noir_passe);
+}

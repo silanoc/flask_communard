@@ -7,18 +7,9 @@
 
 {% block content %}
 <h2>{{communard}}</h2>
-<p>fiche à propos de {{communard}}</p>
+<p>Fiche à propos de {{communard}}</p>
 
 <div class="conteneur">
-    <div >
-        {% for key,info_item in info.items() %}
-        {% for key2, id_comm in info_item.items() %}
-            {%if key == 'thumb.value' and loop.first %}
-            <p><img class="portrait" src="{{id_comm}}" alt="echec ou pas d'image - "{{id_comm}}"></p>
-            {% endif %}
-        {% endfor %}
-        {% endfor %}   
-    </div>
     <div>
     {% for key,info_item in info.items()  %}
     {% for key2, id_comm in info_item.items()  %}
@@ -44,5 +35,15 @@
     {% endfor %}
     {% endfor %}
     </div>
+
+    <div >
+        {% for key,info_item in info.items() %}
+        {% for key2, id_comm in info_item.items() %}
+            {%if key == 'thumb.value' and loop.first %}
+            <p><img class="portrait" src="{{id_comm}}" alt="echec ou pas d'image - "{{id_comm}}"></p>
+            {% endif %}
+        {% endfor %}
+        {% endfor %}   
     </div>
+</div>
 {% endblock %}
