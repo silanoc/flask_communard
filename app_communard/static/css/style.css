@@ -1,10 +1,61 @@
 @charset "UTF-8"; 
+@font-face{
+    /* font le plus proche de celui utilisé pour les affiches */
+    font-family: 'FontsFree-Net-Balboa-W00-ExtraBlack';
+    src: url('../font/FontsFree-Net-Balboa-W00-ExtraBlack.ttf');
+}
 
+:root{
+    --noir_passe: #272822;
+    --couleur_vieille_affiche: #faf6f0
+}
+
+body{
+    background-color: var(--couleur_vieille_affiche);
+}
+
+
+/*------------bannière entete---------------- */
 header{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    border-style: dashed;
+    border-width: 0.1rem;
+    border-color: var(--noir_passe);
+}
+
+h1.titre_du_site{
+    font-family: 'FontsFree-Net-Balboa-W00-ExtraBlack';
+    font-size: 4rem;
+    text-align: center;
+    color: var(--noir_passe);
+    opacity: 90%;
+}
+
+.image_banniere{
+    max-height: 200px;
+}
+
+/*---------------Menu--------------------*/
+
+nav{
+    border-style: dashed;
+    border-width: 0.1rem;
+    border-color: var(--noir_passe);
+}
+
+nav li{
+    display:inline;
+}
+
+/*-------------corps------------------------*/
+
+article{
+    border-style: dashed;
+    border-width: 0.1rem;
+    border-color: var(--noir_passe);
 }
 
 .conteneur{
@@ -14,13 +65,12 @@ header{
     align-items: center;
 }
 
+
 .portrait{
     max-height: 250px;
 }
 
-nav li{
-    display:inline;
-}
+
 
 h1, h2 {
     color:darkred

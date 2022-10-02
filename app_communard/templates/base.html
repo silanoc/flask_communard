@@ -7,8 +7,11 @@
 </head>
 <body>
     <header>
-        <img width="256" alt="The Soviet Union 1971 CPA 3991 stamp (Fighting at the Barricades)" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/The_Soviet_Union_1971_CPA_3991_stamp_%28Fighting_at_the_Barricades%29.jpg/256px-The_Soviet_Union_1971_CPA_3991_stamp_%28Fighting_at_the_Barricades%29.jpg">
-        <h1>Commune de Paris en liberté</h1>
+        <img class="image_banniere" alt="The Soviet Union 1971 CPA 3991 stamp (Fighting at the Barricades)" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/The_Soviet_Union_1971_CPA_3991_stamp_%28Fighting_at_the_Barricades%29.jpg/256px-The_Soviet_Union_1971_CPA_3991_stamp_%28Fighting_at_the_Barricades%29.jpg">
+        <div>
+            <h1 class="titre_du_site">Commune de Paris</h1>
+            <h1 class="titre_du_site">en liberté</h1>
+        </div>
     </header>
     <nav>
         <ul>
@@ -19,7 +22,9 @@
             <li>Affiches</li>
         </ul>
     </nav>
-    {% block content %}{% endblock %}
+    <article>
+        {% block content %}{% endblock %}
+    </article>
 </body>
 </html>
 
