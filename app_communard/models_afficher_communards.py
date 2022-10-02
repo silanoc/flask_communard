@@ -33,7 +33,7 @@ def obtenir_les_labels_communards(df: pd.DataFrame) -> list[str]:
     return list_personnage
 
 
-def extraire_du_df_un_dict_pour_une_personne(individu: str, df: pd.DataFrame = df_communard) -> dict():
+def extraire_du_df_un_dict_pour_une_personne(individu: str, df: pd.DataFrame = df_communard) -> dict:
     """individu correspond à la personne recharché dans le df_communard.
     On extrait la ligne de la personne dans df2, puis on transforme ce df2 en dictionnaire.
     Il peut y avoir plusieurs ligne dans le df2, même pour une personne.
@@ -43,7 +43,7 @@ def extraire_du_df_un_dict_pour_une_personne(individu: str, df: pd.DataFrame = d
     :return info_communard: dictionnaire avec totes les informations de la personne
     :rtype: dict
     """
-    info_communard: dict[dict] = {}
+    info_communard: dict = {}
     logging.debug(individu)
     df2: pd.DataFrame = df[df['communardLabel.value'].isin([individu])]
     logging.debug(df2)
