@@ -51,11 +51,19 @@ nav{
     border-style: dashed;
     border-width: 0.1rem;
     border-color: var(--noir_passe);
+    
 }
 
+/*
 nav li{
     display:inline;
 }
+
+
+nav .niv_1{
+    display:inline;
+}
+*/
 
 /*-------------corps------------------------*/
 

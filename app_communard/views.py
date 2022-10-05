@@ -32,5 +32,12 @@ def fiche(communard):
     return render_template('fiche.html', communard=communard, info=info, id_comm=id_comm)
 
 
+@app.route('/cimetieres/')
+def cimetieres():
+    """Page sur les cimetieres"""
+    logging.info("affiche la page cimetieres")
+    return render_template('cimetieres.html')
+    
+
 if __name__ == "__main__":
     app.run()

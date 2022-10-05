@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block title %}Les communardes et communards dans des cimetières{% endblock %}
+
+{% block content %}
+<h2>Généralités</h2>
+<p>Pour certain·e·s communard·e·s, le lieu de sépulture (P119) est connu. Pour certain·e·s les coordonnées géographiques de la tombe sont dans wikidata.</p>
+<h3>Cimetière du Montparnasse</h3>
+<p>Cartes des tombes de communard·e·s ou de personnes ayant un lien avec la Commune dans le cimetière du Montparnasse (Q272208).</p>
+<iframe style="width: 80vw; height: 75vh; border: none;" 
+src="https://query.wikidata.org/embed.html#%23defaultView%3AMap%0ASELECT%20Distinct%20%3Ftombe%20%3FtombeLabel%20%3Fimage_Tombe%20%3Fcoordonn%C3%A9es%20%3Ftombe_deLabel%20%3Fimage_personne%20WHERE%20%7B%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%20%20%0A%20%20%23Qui%2C%20les%20communard-e-s%20et%20la%20liste%20des%20personnes%20lors%20de%20la%20c%C3%A9r%C3%A9monie%0A%20%20%3Fcommunard%20wdt%3AP106%20wd%3AQ1780490%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20wdt%3AP119%20wd%3AQ272208.%0A%20%20Values%20%3Fpersonnalite%20%7Bwd%3AQ313709%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ61897268%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ5749%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ1959369%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ3047711%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ3022660%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ551648%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ704649%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ2826417%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ3302715%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20wd%3AQ337628%7D%0A%20%20%23Chercher%20les%20tombes%20du%20cimeti%C3%A8re%20montparnasse%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%3Ftombe%20wdt%3AP361%20wd%3AQ272208%3B%0A%20%20%20%20%20%20%20%20%20wdt%3AP547%20%3Ftombe_de.%20%20%20%20%20%20%20%20%0A%20%20%23Prendre%20les%20tombes%20voulues%0A%20%20filter%20(%3Ftombe_de%20%3D%3Fcommunard%20%7C%7C%20%3Ftombe_de%3D%3Fpersonnalite)%0A%20%20%0A%20%20OPTIONAL%20%7B%3Ftombe%20wdt%3AP18%20%3Fimage_Tombe.%7D%0A%20%20OPTIONAL%20%7B%3Ftombe%20wdt%3AP625%20%3Fcoordonn%C3%A9es.%7D%0A%20%20OPTIONAL%20%7B%3Ftombe_de%20wdt%3AP18%20%3Fimage_personne.%7D%0A%20%20%0A%7D" 
+referrerpolicy="origin" 
+sandbox="allow-scripts allow-same-origin allow-popups">
+</iframe>
+<p>La carte est directement générée par WikiQueryService en fonction de la requête demandée.</p> 
+<h3>Cimetière du Père la Chaise</h3>
+<p>Cartes des tombes de communard·e·s ou de personnes ayant un lien avec la Commune dans le cimetière du Père-Lahaise (Q311).</p>
+<iframe style="width: 80vw; height: 50vh; border: none;" 
+src="https://query.wikidata.org/embed.html#%23defaultView%3AMap%0ASELECT%20Distinct%20%3Ftombe%20%3FtombeLabel%20%3Fimage_Tombe%20%3Fcoordonn%C3%A9es%20%3Ftombe_deLabel%20%3Fimage_personne%20WHERE%20%7B%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%20%20%0A%20%20%23Qui%2C%20les%20communard-e-s%0A%20%20%3Fcommunard%20wdt%3AP106%20wd%3AQ1780490%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20wdt%3AP119%20wd%3AQ311.%0A%0A%20%20%23Chercher%20les%20tombes%20du%20cimeti%C3%A8re%20montparnasse%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%3Ftombe%20wdt%3AP361%20wd%3AQ311%3B%0A%20%20%20%20%20%20%20%20%20wdt%3AP547%20%3Ftombe_de.%20%20%20%20%20%20%20%20%0A%20%20%23Prendre%20les%20tombes%20voulues%0A%20%20filter%20(%3Ftombe_de%20%3D%3Fcommunard)%0A%20%20%0A%20%20OPTIONAL%20%7B%3Ftombe%20wdt%3AP18%20%3Fimage_Tombe.%7D%0A%20%20OPTIONAL%20%7B%3Ftombe%20wdt%3AP625%20%3Fcoordonn%C3%A9es.%7D%0A%20%20OPTIONAL%20%7B%3Ftombe_de%20wdt%3AP18%20%3Fimage_personne.%7D%0A%20%20%0A%7D" 
+referrerpolicy="origin" 
+sandbox="allow-scripts allow-same-origin allow-popups">
+</iframe>
+
+{% endblock %}
