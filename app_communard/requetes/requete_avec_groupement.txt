@@ -1,0 +1,34 @@
+SELECT ?communard ?communardLabel ?sexe_ou_genreLabel ?date_de_naissance ?lieu_de_naissanceLabel ?conjointLabel (GROUP_CONCAT(DISTINCT ?occupationLabel; SEPARATOR = ", ") AS ?LeursoccupationsLabel) (GROUP_CONCAT(DISTINCT ?prenomLabel; SEPARATOR = ", ") AS ?prenoms) (GROUP_CONCAT(DISTINCT ?nomLabel; SEPARATOR = ", ") AS ?noms) ?date_de_mort ?circonstances_de_la_mortLabel ?cause_de_la_mortLabel ?identifiant_Maitron ?thumb WHERE {
+  SERVICE wikibase:label {
+    bd:serviceParam wikibase:language "fr".
+    ?communard rdfs:label ?communardLabel.
+    ?sexe_ou_genre rdfs:label ?sexe_ou_genreLabel.
+    ?occupation rdfs:label ?occupationLabel.
+    ?lieu_de_naissance rdfs:label ?lieu_de_naissanceLabel.
+    ?conjoint rdfs:label ?conjointLabel.
+    ?prenom rdfs:label ?prenomLabel.
+    ?nom rdfs:label ?nomLabel.
+    ?circonstances_de_la_mort rdfs:label ?circonstances_de_la_mortLabel.
+    ?cause_de_la_mort rdfs:label ?cause_de_la_mortLabel.
+  }
+  ?communard wdt:P106 wd:Q1780490.
+  OPTIONAL { ?communard wdt:P21 ?sexe_ou_genre. }
+  OPTIONAL { ?communard wdt:P569 ?date_de_naissance. }
+  OPTIONAL { ?communard wdt:P19 ?lieu_de_naissance. }
+  OPTIONAL { ?communard wdt:P106 ?occupation. }
+  OPTIONAL { ?communard wdt:P26 ?conjoint. }
+  OPTIONAL { ?communard wdt:P735 ?prenom. }
+  OPTIONAL { ?communard wdt:P734 ?nom.}  
+  OPTIONAL { ?communard wdt:P570 ?date_de_mort. }
+  OPTIONAL { ?communard wdt:P1196 ?circonstances_de_la_mort. }
+  OPTIONAL { ?communard wdt:P509 ?cause_de_la_mort. }
+  OPTIONAL { ?communard wdt:P4724 ?identifiant_Maitron. }
+  OPTIONAL { ?communard wdt:P18 ?image. }
+  
+  BIND(REPLACE(wikibase:decodeUri(STR(?image)), "http://commons.wikimedia.org/wiki/Special:FilePath/", "") as ?fileName) .
+  BIND(REPLACE(?fileName, " ", "_") as ?safeFileName)
+  BIND(MD5(?safeFileName) as ?fileNameMD5) .
+  BIND(CONCAT("https://upload.wikimedia.org/wikipedia/commons/", SUBSTR(?fileNameMD5, 1, 1), "/", SUBSTR(?fileNameMD5, 1, 2), "/", ?safeFileName) as ?thumb)
+
+}
+GROUP BY ?communard ?communardLabel ?sexe_ou_genreLabel ?date_de_naissance ?lieu_de_naissanceLabel ?conjointLabel ?date_de_mort ?circonstances_de_la_mortLabel ?cause_de_la_mortLabel ?identifiant_Maitron ?thumb

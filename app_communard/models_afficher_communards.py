@@ -10,7 +10,8 @@ logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
 # extraction de la requete
-extract = Extraction("app_communard/requetes/requete_nom_prenom_image_maiton.txt")
+#extract = Extraction("app_communard/requetes/requete_nom_prenom_image_maiton.txt")
+extract = Extraction("app_communard/requetes/requete_avec_groupement.txt")
 df_communard: pd.DataFrame = extract.get_dataframe()
 
 

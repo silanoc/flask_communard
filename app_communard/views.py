@@ -6,6 +6,11 @@ import logging
 from .models_afficher_communards import liste_des_communards, extraire_du_df_un_dict_pour_une_personne, trouver_id_communard
 app = Flask(__name__)
 
+logging.basicConfig(level=logging.DEBUG,
+                    filename="./app_communard/logs/app.log",
+                    filemode="w",
+                    format='%(asctime)s - %(levelname)s - %(message)s')
+
 
 @app.route('/')
 @app.route('/index/')
@@ -29,6 +34,9 @@ def fiche(communard):
     info = extraire_du_df_un_dict_pour_une_personne(communard)
     id_comm = trouver_id_communard(communard, info)
     logging.info("affiche la fiche d'un personnage")
+    logging.debug(communard)
+    logging.debug(info)
+    logging.debug(id_comm)
     return render_template('fiche.html', communard=communard, info=info, id_comm=id_comm)
 
 

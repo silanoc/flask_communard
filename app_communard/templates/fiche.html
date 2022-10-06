@@ -13,7 +13,10 @@
     <div>
     {% for key,info_item in info.items()  %}
     {% for key2, id_comm in info_item.items()  %}
-        {%if key == 'nom_de_familleLabel.value' and loop.first %}
+        {%if key == 'noms.value' and loop.first %}
+        <p> Nom de famille : {{ id_comm }} </p>
+        {% endif %}
+        {%if key == 'nomLabel.value' %}
         <p> Nom de famille : {{ id_comm }} </p>
         {% endif %}
     {% endfor %}
@@ -21,7 +24,7 @@
 
     {% for key,info_item in info.items() %}
     {% for key2, id_comm in info_item.items() %}
-        {%if key == 'prénomLabel.value' and loop.first %}
+        {%if key == 'prenoms.value' and loop.first %}
         <p> Prénom : {{ id_comm }} </p>
         {% endif %}
     {% endfor %}
