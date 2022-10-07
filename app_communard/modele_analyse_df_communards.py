@@ -13,7 +13,7 @@ class Analyse_df():
     def __init__(self, df: pd.DataFrame) -> None:
         self.df: pd.DataFrame = df
         
-    def recuperer_colonnes_voulues(self, df: pd.DataFrame, *args):
+    def recuperer_colonnes_voulues(self, df: pd.DataFrame, *args) -> pd.DataFrame:
         """faire un data frame avec les colonnes voulues"""
         colonnes_voules: list = []
         for arg in args:
