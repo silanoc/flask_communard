@@ -6,6 +6,9 @@ import os
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+from datetime import datetime
+
+from .models_afficher_communards import df_communard
 
 logging.basicConfig(level=logging.DEBUG,
                     filename="./app_communard/logs/app.log",
@@ -62,8 +65,60 @@ class Analyse_df():
         return nom_graphique
         
                                             
-        
+def analyse_repartition_par_genre():
+    analyse_genre = Analyse_df(df_communard, 'sexe_ou_genreLabel.value')
+    dico_genre = analyse_genre.get_dictionnaire_stat('sexe_ou_genreLabel.value')
+    df_genre = analyse_genre.get_df_pour_graph('sexe_ou_genreLabel.value', 'Genre', 'Nombre')
+    graph_genre = analyse_genre.get_pie(df_genre, 'Genre', 'Nombre', 'Camemberg_genre')
+    #logging.debug(graph_genre)
+    #full_filename = os.path.join(app.config['UPLOAD_FOLDER'], graph_genre)
+    full_filename = '/home/gabriel-le/Documents/flask_communard/app_communard/static/image/' + graph_genre
+    #logging.error(full_filename)
+    titre = ("Répartition par genre")
+    contexte = ("""Dans wikidata, on peut remplir le 'sexe ou genre' (P21) pour les personnes. Certaines personnes peuvent ne pas avoir ce champs renseigné.
+                    Voyons comment se répartissent selon leur genre les communard·e·s ayant une fiche dans wikidata.""")
+    nombre = (f"Il y a {dico_genre['féminin']} femmes, {dico_genre['masculin']} hommes")
+    tableau = df_genre.to_html()
+    return titre, contexte, nombre, tableau, full_filename    
 
-    
 
-        
+def compter_liste_dans_dict(liste: list) -> dict:
+    dictionnaire = {}
+    for item in liste:
+        if item in dictionnaire :
+            dictionnaire[item] += 1
+        else:
+            dictionnaire[item] = 1
+    return dictionnaire
+
+
+def analyse_repartition_par_date_de_naissance():
+    analyse_date = Analyse_df(df_communard, 'date_de_naissance.value')
+    #--
+    liste_date_entiere = analyse_date.df_reduit['date_de_naissance.value'].values
+    logging.debug(liste_date_entiere)    
+    #--
+    liste_annee = []
+    liste_age = []
+    debut_commune = datetime(1871, 3, 18)
+    for date_naissance in liste_date_entiere:
+        try:
+            liste_annee.append(datetime.fromisoformat(date_naissance[:-1]).year)
+            age = debut_commune - datetime.fromisoformat(date_naissance[:-1])
+            liste_age.append(int(age.days // 365.25))
+        except:
+            logging.warning("format de date non exploitable")
+    logging.debug(liste_annee)
+    logging.debug(liste_age)
+    dico_annee = compter_liste_dans_dict(liste_annee)
+    dico_age = compter_liste_dans_dict(liste_age)
+    logging.debug(dico_annee)
+    logging.debug(dico_age)
+    #--
+    plt.hist(liste_annee)
+    plt.show()
+    #sns.histplot(data=dico_annee, x=dico_annee.keys, y = dico_annee.values)
+    sns.histplot(data=liste_annee)
+    plt.show()
+    sns.boxplot(data=liste_age)
+    plt.show()        
