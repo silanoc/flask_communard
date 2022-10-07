@@ -29,5 +29,12 @@ class Analyse_df():
         """simple convertion"""
         return serie.to_dict()
     
+    def serie_vers_df(self, serie: pd.Series, colonne_index: str, colonne_valeur:str) -> pd.DataFrame:
+        df_sortie:pd.DataFrame = serie.to_frame()
+        df_sortie = df_sortie.rename(columns = {'' : colonne_index})
+        df_sortie = df_sortie.rename(columns = {1 : colonne_valeur})
+        return df_sortie
+
+    
 
         

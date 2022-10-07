@@ -46,3 +46,11 @@ class Test_analyse_df_communards():
         sortie = analyse.serie_vers_dict(serie_de_test)
         assert type(sortie) == dict
         assert sortie == {'féminin': 2, 'masculin': 1, 'Na': 1}
+        
+    def test_serie_vers_df(self, df_de_test, serie_de_test: pd.Series):
+        analyse = Analyse_df(df_de_test)
+        df_sortie: pd.DataFrame = analyse.serie_vers_df(serie_de_test, 'sexe_ou_genreLabel', 'nombre')
+        assert df_sortie.shape[0] == serie_de_test.shape[0]
+        assert type(df_sortie) == pd.DataFrame
+        
+        
