@@ -20,3 +20,7 @@ class Analyse_df():
             colonnes_voules.append(arg)
         df_reduit: pd.DataFrame = df[colonnes_voules]
         return df_reduit
+    
+    def df_vers_serie(self, df: pd.DataFrame, colonne) -> pd.Series:
+        """simple convertion"""
+        return df[colonne]
