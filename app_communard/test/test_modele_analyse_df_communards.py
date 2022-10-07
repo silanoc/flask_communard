@@ -16,6 +16,12 @@ class Test_analyse_df_communards():
         df = pd.DataFrame(data)
         return df
     
+    @pytest.fixture()
+    def serie_de_test(self):
+        data = {'féminin': 2, 'masculin': 1, 'Na': 1}
+        serie = pd.Series(data=data, index=['féminin', 'masculin', 'Na'])
+        return serie
+
     def test_recuperer_colonnes_voulues(self, df_de_test):
         """on fait deux dataFrame avec des sélection de colonens différents. 
         On vérifie le type et shape"""
@@ -34,3 +40,9 @@ class Test_analyse_df_communards():
         serie: pd.Series = analyse.df_vers_serie(df_de_test, 'sexe_ou_genreLabel')
         assert type(serie) == pd.Series
         assert serie.shape == (4,)
+        
+    def test_serie_vers_dict(self, df_de_test, serie_de_test):
+        analyse = Analyse_df(df_de_test)
+        sortie = analyse.serie_vers_test(serie_de_test)
+        assert type(sortie) == dict
+        assert sortie == {'féminin': 2, 'masculin': 1, 'Na': 1}
