@@ -27,30 +27,35 @@ class Test_analyse_df_communards():
         On vérifie le type et shape"""
         analyse = Analyse_df(df_de_test)
         #--
-        df_test_reduit: pd.DataFrame = analyse.recuperer_colonnes_voulues(df_de_test, 'communardLabel.value','occupation.value')
+        df_test_reduit: pd.DataFrame = analyse._recuperer_colonnes_voulues(df_de_test, 'communardLabel.value','occupation.value')
         assert type(df_test_reduit) == pd.DataFrame
         assert df_test_reduit.shape == (4, 2)
         #--
-        df_test_reduit: pd.DataFrame = analyse.recuperer_colonnes_voulues(df_de_test, 'communardLabel.value')
+        df_test_reduit: pd.DataFrame = analyse._recuperer_colonnes_voulues(df_de_test, 'communardLabel.value')
         assert type(df_test_reduit) == pd.DataFrame
         assert df_test_reduit.shape == (4, 1)
     
-    def test_df_vers_serie(self, df_de_test):
+    def test_df_vers_compte_de_serie(self, df_de_test):
         analyse = Analyse_df(df_de_test)
-        serie: pd.Series = analyse.df_vers_serie(df_de_test, 'sexe_ou_genreLabel')
+        serie: pd.Series = analyse._df_vers_compte_de_serie(df_de_test, 'sexe_ou_genreLabel')
         assert type(serie) == pd.Series
-        assert serie.shape == (4,)
+        assert serie.shape == (3,)
+        #--
+        serie: pd.Series = analyse._df_vers_compte_de_serie(df_de_test, 'occupation.value')
+        assert type(serie) == pd.Series
+        assert serie.shape == (1,)
         
     def test_serie_vers_dict(self, df_de_test, serie_de_test):
         analyse = Analyse_df(df_de_test)
-        sortie = analyse.serie_vers_dict(serie_de_test)
+        sortie = analyse._serie_vers_dict(serie_de_test)
         assert type(sortie) == dict
         assert sortie == {'féminin': 2, 'masculin': 1, 'Na': 1}
         
     def test_serie_vers_df(self, df_de_test, serie_de_test: pd.Series):
         analyse = Analyse_df(df_de_test)
-        df_sortie: pd.DataFrame = analyse.serie_vers_df(serie_de_test, 'sexe_ou_genreLabel', 'nombre')
+        df_sortie: pd.DataFrame = analyse._serie_vers_df_renome(serie_de_test, 'sexe_ou_genreLabel', 'nombre')
         assert df_sortie.shape[0] == serie_de_test.shape[0]
         assert type(df_sortie) == pd.DataFrame
         
+
         
