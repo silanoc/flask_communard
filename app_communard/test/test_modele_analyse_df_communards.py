@@ -43,6 +43,6 @@ class Test_analyse_df_communards():
         
     def test_serie_vers_dict(self, df_de_test, serie_de_test):
         analyse = Analyse_df(df_de_test)
-        sortie = analyse.serie_vers_test(serie_de_test)
+        sortie = analyse.serie_vers_dict(serie_de_test)
         assert type(sortie) == dict
         assert sortie == {'féminin': 2, 'masculin': 1, 'Na': 1}

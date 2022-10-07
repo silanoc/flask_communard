@@ -24,3 +24,10 @@ class Analyse_df():
     def df_vers_serie(self, df: pd.DataFrame, colonne) -> pd.Series:
         """simple convertion"""
         return df[colonne]
+    
+    def serie_vers_dict(self, serie: pd.Series) -> dict:
+        """simple convertion"""
+        return serie.to_dict()
+    
+
+        
