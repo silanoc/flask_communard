@@ -11,13 +11,12 @@
 
 <div class="conteneur">
     <div>
+    <h3>État civil</h3>
+    <dl>
     {% for key,info_item in info.items()  %}
     {% for key2, id_comm in info_item.items()  %}
         {%if key == 'noms.value' and loop.first %}
-        <p> Nom de famille : {{ id_comm }} </p>
-        {% endif %}
-        {%if key == 'nomLabel.value' %}
-        <p> Nom de famille : {{ id_comm }} </p>
+        <dt> Nom de famille :</dt><dd>{{ id_comm }}</dd>
         {% endif %}
     {% endfor %}
     {% endfor %}
@@ -25,21 +24,58 @@
     {% for key,info_item in info.items() %}
     {% for key2, id_comm in info_item.items() %}
         {%if key == 'prenoms.value' and loop.first %}
-        <p> Prénom : {{ id_comm }} </p>
+        <dt>Prénom :</dt><dd>{{ id_comm }}</dd>
         {% endif %}
     {% endfor %}
     {% endfor %}
 
     {% for key,info_item in info.items() %}
     {% for key2, id_comm in info_item.items() %}
-        {%if key == 'identifiant_Maitron.value' and loop.first%}
-        <p> article dans le Maiton : <a href="https://maitron.fr/spip.php?article{{ id_comm }}">{{id_comm}}</a> </p>
+        {%if key == 'date_de_naissance.value' and loop.first %}
+        <dt>Date de naissance :</dt><dd>{{ id_comm }}</dd>
         {% endif %}
     {% endfor %}
     {% endfor %}
+
+    {% for key,info_item in info.items() %}
+    {% for key2, id_comm in info_item.items() %}
+        {%if key == 'date_de_mort.value' and loop.first %}
+        <dt>Date de décès :</dt><dd>{{ id_comm }}</dd>
+        {% endif %}
+    {% endfor %}
+    {% endfor %}
+
+    {% for key,info_item in info.items() %}
+    {% for key2, id_comm in info_item.items() %}
+        {%if key == 'lieu_de_naissanceLabel.value' and loop.first %}
+        <dt>Lieu de naissance :</dt><dd>{{ id_comm }}</dd>
+        {% endif %}
+    {% endfor %}
+    {% endfor %}
+    </dl> 
+    </div>
+
+    <div>
+        <h3>Éléments de vie</h3>
+        {% for key,info_item in info.items() %}
+        {% for key2, id_comm in info_item.items() %}
+            {%if key == 'conjointLabel.value' and loop.first %}
+            <dt>Conjoint :</dt><dd>{{ id_comm }}</dd>
+            {% endif %}
+        {% endfor %}
+        {% endfor %}
+
+        {% for key,info_item in info.items() %}
+        {% for key2, id_comm in info_item.items() %}
+            {%if key == 'LeursoccupationsLabel.value' and loop.first %}
+            <dt>Occupation :</dt><dd>{{ id_comm }}</dd>
+            {% endif %}
+        {% endfor %}
+        {% endfor %}
     </div>
 
     <div >
+        <h3>iconographie</h3>     
         {% for key,info_item in info.items() %}
         {% for key2, id_comm in info_item.items() %}
             {%if key == 'thumb.value' and loop.first %}
@@ -48,5 +84,28 @@
         {% endfor %}
         {% endfor %}   
     </div>
+
+    
+    </div>
+
+<div>
+    <h3>Références</h3>
+    <ul>
+    {% for key,info_item in info.items() %}
+    {% for key2, id_comm in info_item.items() %}
+        {%if key == 'communard.value' and loop.first%}
+        <li>article dans wikidata : <a href="{{ id_comm }}">{{id_comm}}</a></li>
+        {% endif %}
+    {% endfor %}
+    {% endfor %}
+
+    {% for key,info_item in info.items() %}
+    {% for key2, id_comm in info_item.items() %}
+        {%if key == 'identifiant_Maitron.value' and loop.first%}
+        <li>article dans le Maiton : <a href="https://maitron.fr/spip.php?article{{ id_comm }}">https://maitron.fr/spip.php?article{{ id_comm }}</a></li>
+        {% endif %}
+    {% endfor %}
+    {% endfor %}
+    </ul>
 </div>
 {% endblock %}
