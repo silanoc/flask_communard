@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block title %}presentation et methodologie du site{% endblock %}
+
+{% block content %}
+
+<h2>Point grammatical</h2>
+<p>Pour un certains nombre de raison, j'use du genre grammatical neutre, en l'écrivant selon les règles de grammaire proposées par Alphératz dans son ouvrage Grammaire inclusive du Français. Je signale la première occurrence de ces mots par un \*.</p>
+<p>J'emploie ces tournures pour parler de moi-même, et pour éviter des doubles flexions comme communardes et communards.</p> 
+<p>En neutre, al* faudrait écrire an Communarx et des Communarz. Pour que les moteurs de recherche puissent trouver le site, je décide de garder selon les moments Communardes et Communards ou ça forme raccourcie communard·e·s.</p>
+
+<h2>Qui suis-je pour le faire ?</h2>
+<p>Il se trouve que je suis membre de l'association les Amies et amis de la Commune de Paris 1871 depuis pas mal de temps (plus d'une décennie, c'est sûr) quand je n'oublie pas de cotiser... Toutefois, ce site est fait de façon autonome de l’association.<p></p>
+<p>Je ne suis pas du tout historian*, mais geekette, c'est à dire passionæ* d'informatique.</p>
+<p>J'ai commenæ à contribuer sur Wikipédia en 2006 puis sur Wikidata à partir de 2017. J'y contribue sous le pseudo Silanoc.</p>
+<p>Je ne sais pas aller chercher l'information dans les sources primaires de l'époque, dans les archives... c'est du ressort des histoirans. Par contre j'aime rendre les informations, la donnée, la data accessibles au plus grand nombre. Et c'est là que Wikidata intervient.</p>
+<p>C'est un projet libre et gratuit. Tout le monde peut y accéder, y contribuer. N'étant pas rédigé comme Wikipédia, mais étant une base de données, le système a été conçu comme naturellement multilinguistique. De ce fait, toutes les modifications sont accessibles par les locutaires* du monde entier (à quelques détails près). Et c'est très utilisé pour tout ce qui touche à "l'intelligence artificielle" car elle a besoin d'une base de données. Autant lui donner des informations sur un sujet trop souvent ignoré.</p>
+
+<quote>Wikidata est une base de connaissances libre et gratuite qui peut être lue et modifiée tant par des personnes que par des dispositifs informatisés. 
+page d'acceuil de wikipédia</quote>
+
+<p>Tout ce site/article est basé sur des données de Wikidata ou des images de Commons. Cela par définition sous licence libre (plusieurs existes). Mes propos sont également sous licence créative commons.</p>
+
+<h2>Méthodologie</h2>
+<p>Mon objectif est de travailler qu'avec des données contenues dans l'univers wikimédia : wikidata, commons, wikipédia, éventuellement wikisources, wikiquote...</p>
+<p>Les données sont collaboratives. Cela nécessite de faire confiance au travail des autres sur lequel je m'appuie. Le maximum d'information doit être sourcé. Dans l'analyse statistique/globale, je fais le pari de leur fiabilité. En cas de doute, il est facile de vérifier au cas par cas.</p>
+<p>Les données sont celles que les autres personnes ont déjà rentrées. Il y a donc des trous, des blancs, des manques.</p>
+<p>Chacun de mes résultats est donc à introduire par : "en fonction du contenu de wikidata...".</p>
+<p>Ce n'est pas une vérité totale et absolue. Mais une partie de la vérité.</p>
+<p>C'est un travail vérifiable et reproductible. Toutes les données sont publiques (par définition) et mes méthodes de recherche/calcul sont communicables. Aussi, toute personne peut les évaluer et refaire.</p>
+<p>C'est un contenu évolutif en fonction des apports/modifications/suppressions fait à la base de données.</p>
+<p>J'apporte aussi du contenu dedans, par des photos, des ajouts, des précisions en fonction de ce que je peux remplir sans me tromper.</p>
+
+<h3>Wikidata : élément, propriété, valeurs.</h3>
+<p>Wikidata stocke des éléments. Tout ce qui existe (au sens qui peut être décrit) est un potentiel élément. Aussi chaque communard·e·s, barricades, livres, événements... sont un élément. Ils commencent par la lettre Q, puis un nombre en fonction de son ordre de création.</p>
+<p>Chaque élément possède une ou plusieurs propriétés. Cela peut être un prénom, une date de création, un coordonnées géographique... Ils commence par un P.</p>
+<p>À chaque propriété d'un élément il existe une ou plusieurs valeurs.Cela peut être un nombre, une date, ou un autre élément de wikidata.</p>
+<p>Cela fait une série de triplets : éléments, propriété, valeurs.</p>
+<p>Plus de détails : https://www.wikidata.org/wiki/Wikidata:Introduction/fr</p>
+{% endblock %}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block title %}presentation et methodologie du site{% endblock %}
+
+{% block content %}
+
+<h2>Trouver des communard·e·s sur wikidata</h2>
+
+<h3>L'élément "communard ou communarde"</h3>
+<p>Sur Wikidata, al existe l'élément communard ou communarde, sous le nombre <a href="https://www.wikidata.org/wiki/Q1780490">Q1780490</a></p>
+<quote>communard ou communarde (Q1780490)<br>
+personne participant à la Commune de Paris</quote>
+
+<h3>La propriété "occupation"</h3>
+<p>Sur wikidata, la propriété <a href="https://www.wikidata.org/wiki/Property:P106">P106</a>, permet de renseigner l'occupation (au sens très large ) d'une personne.</p>
+<quote>occupation (P106)<br>
+nature d'activité d'une personne (métier, hobby…) ; voir aussi « domaine d'activité » (P101) et « fonction » (P39)</quote>
+
+<h3> le triplet <code>?communard wdt:P106 wd:Q1780490</code>.</h3>
+<p>Pour toutes les recherche je considère que la personne est communard·e via occupation communard, soit <code>?communard wdt:P106 wd:Q1780490.</code> si la requête a été écrite avant le 7 janvier 2023 ou <code>?communard_ou_communarde wdt:P106 wd:Q1780490.</code> après.</p>
+<p>Quand j'ai commencé a m'intéresser à ce sujet c'était ce triplet qui était déjà majoritaire.  Il était en "concurrence" avec  allégeance à Commune, participant à la Commune, conflit commune... Cela aurait nécessité plus de changement.</p>
+<p>Pour mémoire il s'agit des triplets :</p>
+<code>
+?communard wdt:P945 wd:Q133132.<br>
+?communard wdt:P945 wd:Q1249756.<br>
+?communard wdt:P463 wd:Q1249756.<br>
+?communard wdt:P463 wd:Q133132.<br>
+?communard wdt:P607 wd:Q133132.<br>
+</code>
+
+<h2>Les communard·e·s connu·e·s sur wikidata</h2>
+
+<h3>Liste compléte</h3>
+<iframe style="width: 90%; height: 50vh; margin-left: 5%; border: none;" src="https://query.wikidata.org/embed.html#%23title%3A%20Communard%20et%20Communarde.%20Colonne%20de%20gauche%20%3A%20lien%20vers%20l'%C3%A9l%C3%A9ment%20correspondant%2C%20colonne%20de%20droite%20pr%C3%A9nom%20et%20nom%20usuels.%0ASELECT%20Distinct%20%3Fcommunard_ou_communarde%20%3Fcommunard_ou_communardeLabel%20WHERE%20%7B%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%20%20%3Fcommunard_ou_communarde%20wdt%3AP106%20wd%3AQ1780490.%0A%7D" referrerpolicy="origin" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+
+<h3>Nombre de personne</h3>
+<ul>
+    <li>9 mars 2022 : 248</li>
+    <li>16 janvier 2023 : 297</li>
+</ul>
+<p>Compteur actualisé en temps réel</p>
+<iframe style="width: 50%; height: 15vh; margin-left: 25%; border: none;" src="https://query.wikidata.org/embed.html#SELECT%20(Count(%3Fcommunard_ou_communarde)%20as%20%3Fnombre_de_personne)%20WHERE%20%7B%0A%20%20%3Fcommunard_ou_communarde%20wdt%3AP106%20wd%3AQ1780490.%0A%7D%0Agroup%20by%20%3Fnombre_de_personne" referrerpolicy="origin" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+
+<h2>Quelques tests possibles pour vérifier la fiabilité des données.</h2>
+<h3>Pour vérifier qu'ils ne sont pas née après ou mort avant la Commune</h3>
+<code>
+SELECT ?communard ?communardLabel ?naissance?deces WHERE {
+SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+?communard wdt:P106 wd:Q1780490;
+            wdt:P569 ?naissance;
+            wdt:P570 ?deces.
+#FILTER(year(?deces)<1871 && year(?naissance)>1871) . 
+}
+</code>
+<p>-> au 16 janvier il y a entre 2 et 4 données à examiner correctement et corriger.</p>
+
+<h3>S'agit-il d'être humain ?</h3>
+<iframe style="width:  50%; height: 15vh; margin-left: 25%; border: none;" src="https://query.wikidata.org/embed.html#SELECT%20%20%3Fnature_de_l_%C3%A9l%C3%A9mentLabel%20(count(%3Fnature_de_l_%C3%A9l%C3%A9ment)%20as%20%3Fnb)%20WHERE%20%7B%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%20%20%3Fcommunard_ou_communarde%20wdt%3AP106%20wd%3AQ1780490.%0A%20%20OPTIONAL%20%7B%20%3Fcommunard_ou_communarde%20wdt%3AP31%20%3Fnature_de_l_%C3%A9l%C3%A9ment.%20%7D%0A%7D%0AGroup%20by%20%20%3Fnature_de_l_%C3%A9l%C3%A9ment%20%3Fnature_de_l_%C3%A9l%C3%A9mentLabel" referrerpolicy="origin" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+<p>Wikidata permet de rentrer plein de monde, y compris des êtres de fictions. Il existe quelques communard-e-s de fictions dans par exemple dans le cri du peule, la série de BD communardes...</p>
+<p>Au 16 janvier 2023, il y a 297 êtres humains (Q5) et 0 être humain de fiction (Q15632617).</p>
+<p>La plupart des requêtes recherchent les communard-e-s sans vérifier ce critère. Les requêtes seront à revoir (ou pas) quand un certain nombre de ces êtres fonctionnels arriveront dans Wikidata.</p>
+{% endblock %}

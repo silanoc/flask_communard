@@ -23,6 +23,12 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/presentation_methodologie/')
+def presentation_methodologie():
+    """Page presentation_methodologie"""
+    logging.info("affiche la page de presentation_methodologie")
+    return render_template('presentation_methodologie.html')
+
 @app.route('/personnages/')
 def personnages():
     """Page avec la liste de tou-te-s les communard-e-s"""
@@ -52,7 +58,14 @@ def repartition_par_genre():
 def repartition_par_age():
     analyse_repartition_par_date_de_naissance()
     return render_template('analyse_personne.html')
-    
+
+
+@app.route('/trouver_des_personnes/')
+def trouver_des_personnes():
+    """Page sur la méthodologie pour trouver les communard-e-s"""
+    logging.info("affiche la page trouver des communard-e-s")
+    return render_template('trouver_des_personnes.html')
+
 
 @app.route('/cimetieres/')
 def cimetieres():
